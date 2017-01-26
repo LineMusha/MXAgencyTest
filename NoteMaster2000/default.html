@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>NoteMaster2000</title>
+	<meta charset="utf-8" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+        .note{
+            width: 210px;
+        }
+        .date {
+            text-align: center;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <!-- Collapsible Navigation Bar -->
+    <div class="container">
+
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+
+                <div class="navbar-header">
+
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <span style="font-size: 30px; padding-top: 10px" class="glyphicon glyphicon-pencil"></span> <!--Glyphicon used in place of a logo; courtesy of http://glyphicons.com/-->
+                </div>
+
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">About</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Help<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Creating a new note</a></li>
+                                <li><a href="#">Why is my new note not showing?</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Report a bug</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Log out</a></li>
+                    </ul>
+                    <form class="navbar-form navbar-right" role="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search notes">
+                        </div>
+                        <button type="submit" class="btn btn-default">Submit</button>
+                    </form>
+                </div>
+
+            </div>
+        </nav>
+
+        <div class="container" style="background:lightblue">
+            <div class="page-header">
+                <h1>NoteMaster 2000</h1>
+            </div>
+            <h2 style="font-size: 20px;"><b>InsertUserNameHere</b></h2>
+
+            <form>
+                <br>
+                <textarea type="text" name="note" placeholder="Type new note here"></textarea>
+                <br>
+                <input type="submit" id="saveNote" value="Save" onclick="postNote"> <!--When submitting a note, give the date and time it was submitted and add it to the displayed notes-->
+                <br><br><br>
+            </form>
+
+            <div>
+                <p id="today" class="date"></p>
+                <div class="well well-sm note" style="float:left">
+                    <p>This is a note; a very nice one. It is also a little long. And even though there are no breaks in it, it still resizes nicely.</p>
+                </div>
+
+                <div class="well well-sm note" style="float:left">
+                    <p>This is another note; also a very nice one. It is also a little long. And even though there are no breaks in it, it still resizes nicely.</p>
+                </div>
+            </div>
+        
+            <div>
+                <p id="yesterday" class="date"></p>
+                <div class="well well-sm note">
+                    <p class="date">Thu Jan 19 2017</p>
+                    <p>This is a note written yesterday. It is shorter than the other one.</p>
+                </div>
+            </div>  
+        </div>
+    </div>
+
+    <script src="scripts/jquery-1.9.1.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+</body>
+</html>
+
+<script>
+    var note = document.getElementsByName("note")
+    var saveButton = document.getElementById("saveNote")
+    var today = new Date;
+    document.getElementById("today").innerHTML = today.toDateString("MM/dd/yyyy");
+   
+    var yesterday = new Date(today - 24 * 60 * 60 * 1000);
+    document.getElementById("yesterday").innerHTML = yesterday.toDateString("MM/dd/yyyy");
+
+    function postNote() {
+        //Post the content of the note field in a new div
+        
+    }
+</script>
